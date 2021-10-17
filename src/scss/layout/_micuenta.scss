@@ -1,0 +1,30 @@
+.logo-micuenta{
+
+  display: flex;
+    flex-direction: column;
+
+
+    img{
+
+        width: 100%;
+        height: 100%;
+
+    }
+
+    i{
+
+        font-size: 8rem;
+        text-align: center;
+        color:#11B009;
+        margin-top: 3rem;
+        p{
+            text-transform: uppercase;
+            margin-top: 1rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+
+        }
+    }
+
+
+}

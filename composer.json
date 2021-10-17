@@ -1,0 +1,27 @@
+{
+    "name": "pc/auricualares",
+    "description": "Proyecto Facundo Jaurgeui",
+    "type": "project",
+    "authors": [{
+        "name": "Facundo",
+        "email": "jauregui23fl@gmail.com"
+    }],
+    "require": {
+        "intervention/image": "^2.5",
+        "intervention/image": "dev-master",
+        "firebase/php-jwt": "^5.3",
+        "mercadopago/dx-php": "^2.4",
+        "phpmailer/phpmailer": "^6.5"
+    },
+    "autoload": {
+
+        "psr-4": {
+
+            "App\\": "./models",
+            "MVC\\":   "./",
+            "Controllers\\": "./controllers",
+            "MercadoPago\\": "./vendor/mercadopago"
+            
+        }
+    }
+}
