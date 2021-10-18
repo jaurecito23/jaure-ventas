@@ -1,0 +1,47 @@
+.ingresar-imagen{
+
+    border: 1px solid black;
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: 33% 33% 33%; 
+    column-gap: 1rem;
+    
+    label,button{
+        
+        border: 1px dotted black;
+        padding: 2rem;
+        width: 5rem;
+        height: 5rem;
+
+          
+            position: relative;
+            p{
+
+                bottom: -.2rem;
+                position: absolute;
+                font-size: .5rem;
+                text-align: center;
+            }
+        
+    }
+    
+    label:hover,button:hover{
+
+        
+        i{
+            
+            color: #11B009;
+        }
+        p{
+            
+            color: #11B009;
+
+        }
+        
+        border: 1px dotted rgba(1,1,1,.5);
+
+
+    }
+
+
+}

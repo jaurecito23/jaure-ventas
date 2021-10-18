@@ -18,9 +18,12 @@ $router = new RouterAdmin();
 // Paginas Admin
 $router->get("/",[AdminController::class,"admin"]);
 $router->get("/crearadmin",[AdminController::class,"crearadmin"]);
+$router->get("/crearproducto",[AdminController::class,"crearproducto"]);
+$router->get("/verproductos",[AdminController::class,"verproductos"]);
 
 
-
+//POST
+$router->post("/crearproducto",[AdminController::class,"crearproducto"]);
 
 // Paginas Admin
 $router->comprobarRutas();

@@ -137,9 +137,58 @@ public function eliminarProducto(){
 
     }
 
+
 }
 
 
+public function validarDetalles($detalles = []){
+
+
+    $errores = [];
+
+    
+    if(!$detalles["descripcion-mayor"] || strlen($detalles["descripcion-mayor"]) > 150){
+        
+        $errores[] = "Debes añadir una descripción (Max: 150 caracteres)";
+        
+        
+    }
+  
+
+
+    if(!$detalles["marca"] || strlen($detalles["marca"]) > 30){
+
+        $errores = "Debes añadir una Marca (Max: 30 caracteres)";
+
+    }
+
+    if(!$detalles["modelo"] || strlen($detalles["modelo"]) > 30){
+
+        $errores = "Debes añadir un modelo (Max: 50 caracteres)";
+
+    }
+
+
+    return $errores;
+
+}
+
+
+public function insertarDetalles($id_producto,$detalles){
+
+    $descripcion = $detalles["descripcion-mayor"];
+    $marca = $detalles["marca"];
+    $modelo = $detalles["modelo"];
+
+    $query = "INSERT INTO detalles_productos (id_producto,descripcion,marca,modelo) VALUES($id_producto,'$descripcion','$marca','$modelo');";
+
+    
+
+    $resultado = self::$db->query($query);
+
+    return $resultado;
+
+}
 
 public static function obtenerMasVendidos(){
 

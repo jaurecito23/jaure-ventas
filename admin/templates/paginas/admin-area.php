@@ -27,13 +27,10 @@
 
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          Empieza a administrar Jaure Ventas.
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
+    
       </div>
       <!-- /.card -->
 

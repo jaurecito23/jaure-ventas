@@ -29,8 +29,6 @@ if(!isset($_SESSION["id_usuario"]) ){
     $id_usuario = $_SESSION["id_usuario"];
     $idCarrito = ProductoCarrito::obtenerIdCarrito($id_usuario);
     $_SESSION["idCarrito"] = $idCarrito;
-    
-
 
 }
 // Obtienes los productos del carrito

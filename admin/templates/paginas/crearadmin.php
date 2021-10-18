@@ -79,7 +79,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <input type="hidden" name="agregar-admin" value="1">
+                   
                   <button type="submit"  class="btn btn-info">Añadir</button>
                   <button type="submit" class="btn btn-default float-right">Cancel</button>
                 </div>

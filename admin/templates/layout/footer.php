@@ -27,5 +27,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
+<script src="build/js/bundle.min.js"></script>
 </body>
 </html>
