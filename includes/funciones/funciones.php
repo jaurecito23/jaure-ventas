@@ -3,6 +3,8 @@
 //define("BUILD", __DIR__."/../tufrutiya/build/");
 // define("CARPETA_IMAGENES", __DIR__."/../../imagenes/");
 
+define("CARPETA_IMAGENES",__DIR__."/../../imagenes_productos/");
+
 function incluirTemplate($nombre,$nave = false,$tipo = "Verduras",$cantidad = 1){
 
     $nav = $nave;

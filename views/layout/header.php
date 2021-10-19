@@ -12,6 +12,10 @@
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
+
+		<!-- Icono Pestaña -->
+		<link rel="shortcut icon" href="../img/logo-perfil.png" />
+
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
 

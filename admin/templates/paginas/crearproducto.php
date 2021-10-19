@@ -12,14 +12,49 @@
             <small>LLena el formulario para crear un Producto</small>
           </div>
           <div class="col-sm-6">
-            
+
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
+    <?php if(!empty($errores) || !empty($erroresDetalles)):?>
+      <?php foreach ($errores as $error): ?>
+        <div class="errores">
+
+          <p><?php echo $error; ?></p>
+
+        </div>
+          <?php endforeach;?>
+          <?php foreach($erroresDetalles as $error): ?>
+            <div class="errores">
+
+          <p><?php echo $error; ?></p>
+        </div>
+
+        <?php endforeach;?>
+
+    <?php endif;?>
+
+    <?php if($resultadoAccion):?>
+
+    <div class="resultado-accion">
+
+    <?php
+
+        if($resultadoAccion == 1){
+
+          echo "<p> El producto se creo Correctamente. </p>";
+
+        }
+          ?>
+
+      </div>
+      <?php endif;?>
+
+
     <!-- Abre el FORM de Creacion  -->
-    <form method="POST" enctype="multipart/form-data"> 
+    <form method="POST" enctype="multipart/form-data">
 
     <!-- PRIMERA PARTE  -->
     <div class="row" id="parte-1">
@@ -31,7 +66,7 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Crear Producto</h3>
-          
+
 
         </div>
 
@@ -54,7 +89,7 @@
                   <div class="form-group row">
                     <label for="nombre" class="col-sm-2 col-form-label">Nombre: </label>
                     <div class="col-sm-10">
-                      <input type="text"  class="form-control" id="nombre"  name="producto[nombre]" placeholder="Nombre del Producto"> 
+                      <input type="text"  class="form-control" id="nombre"  name="producto[nombre]" placeholder="Nombre del Producto">
                       <div class="col-sm-10">
                         <p class="error">Debe tener menos de 35 caracteres.</p>
                       </div>
@@ -69,13 +104,13 @@
                       </div>
                     </div>
                   </div>
-                 
+
 
                   <div class="form-group row">
                   <label>Categoria</label>
                   <select name="producto[id_categoria]" class="form-control" >
                     <option selected disabled>--Seleccione--</option>
-                     <?php foreach($categorias as $categoria):?> 
+                     <?php foreach($categorias as $categoria):?>
                     <option value="<?php echo $categoria["id"]; ?>"><?php echo $categoria["nombre"];?></option>
                     <?php endforeach;?>
                   </select>
@@ -101,7 +136,7 @@
                       </div>
                     </div>
                   </div>
-                  
+
                   <div class="form-group row">
                     <label for="descripcion" class="col-sm-2 col-form-label">Descripcion: </label>
                     <div class="col-sm-10">
@@ -112,8 +147,8 @@
                     </div>
                   </div>
 
-                
-                 
+
+
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <input type="hidden" name="agregar-admin" value="1">
@@ -134,10 +169,10 @@
 
 
             <!-- FORMULARIO -->
-            
+
           </section>
     <!-- /.content -->
-    
+
   </div>
               </div>
 
@@ -155,7 +190,7 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Detalles</h3>
-          
+
 
         </div>
 
@@ -178,37 +213,37 @@
                   <div class="form-group row">
                     <label for="descripcion-mayor" class="col-sm-2 col-form-label">Descripción Detallada: </label>
                     <div class="col-sm-10">
-                      <textarea type="text"  class="form-control" id="descripcion-mayor"  name="detalles[descripcion-mayor]" ></textarea> 
-                    
+                      <textarea type="text"  class="form-control" id="descripcion-mayor"  name="detalles[descripcion-mayor]" ></textarea>
+
                       <div class="col-sm-10">
                         <p class="error">Debe tener menos de 150 caracteres.</p>
                       </div>
                     </div>
                   </div>
-              
+
                   <div class="form-group row">
                     <label for="marca" class="col-sm-2 col-form-label">Marca: </label>
                     <div class="col-sm-10">
-                      <input type="text"  class="form-control" id="marca"  name="detalles[marca]" placeholder="Marca del Producto"> 
+                      <input type="text"  class="form-control" id="marca"  name="detalles[marca]" placeholder="Marca del Producto">
                       <div class="col-sm-10">
                         <p class="error">Debe tener menos de 30 caracteres.</p>
                       </div>
                     </div>
                   </div>
-              
+
                   <div class="form-group row">
                     <label for="modelo" class="col-sm-2 col-form-label">Modelos: </label>
                     <div class="col-sm-10">
-                      <input type="text"  class="form-control" id="modelo"  name="detalles[modelo]" placeholder="Modelo del Producto"> 
+                      <input type="text"  class="form-control" id="modelo"  name="detalles[modelo]" placeholder="Modelo del Producto">
                       <div class="col-sm-10">
                         <p class="error">Debe tener menos de 30 caracteres.</p>
                       </div>
                     </div>
                   </div>
-              
 
-                
-                 
+
+
+
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <input type="hidden" name="agregar-admin" value="1">
@@ -229,10 +264,10 @@
 
 
             <!-- FORMULARIO -->
-            
+
           </section>
     <!-- /.content -->
-    
+
   </div>
               </div>
 
@@ -249,8 +284,8 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Imagenes</h3>
-          
-          
+
+
         </div>
 
         <!-- FORMULARIO -->
@@ -265,28 +300,28 @@
               <!-- /.card-header -->
               <!-- form start -->
 
-              
+
                   <div class="form-horizontal">
                       <div class="card-body">
 
                   <div class="form-group row">
                     <label for="descripcion-mayor" class="col-sm-2 col-form-label">Ingresar Imagen</label>
                     <div class="col-sm-10">
-                    
+
                       <div class="ingresar-imagen" data-imagen="1">
-                      <div>  
+                      <div>
                         <label for="imagen-1"><i class="fas fa-images"><p> Img 1 </p></i></label>
 
-                        <input type="file" acept="image/jpg" id="imagen-1" class="form-control hidden"  name="producto[imagenes][imagen-1]" placeholder="Imagenes del Producto"> 
-                      </div>  
-                   
+                        <input type="file" acept="image/jpg" id="imagen-1" class="form-control hidden"  name="producto[imagenes][imagen-1]" placeholder="Imagenes del Producto">
+                      </div>
+
                       <button type="button"  data-imagen="1" class="btn-añadir-imagen"><i class="fas fa-plus"></i></button>
                     </div>
                   </div>
                   </div>
-       
-                
-                  
+
+
+
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <input type="hidden" name="agregar-admin" value="1">
@@ -307,15 +342,15 @@
 
 
             <!-- FORMULARIO -->
-            
+
           </section>
     <!-- /.content -->
-    
+
   </div>
               </div>
 
 
   <!-- TERCERA PARTE  -->
-  
+
 </form>
 <!-- Cierra el FORM de Creacion  -->

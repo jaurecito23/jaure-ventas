@@ -146,25 +146,25 @@ public function validarDetalles($detalles = []){
 
     $errores = [];
 
-    
+
     if(!$detalles["descripcion-mayor"] || strlen($detalles["descripcion-mayor"]) > 150){
-        
+
         $errores[] = "Debes añadir una descripción (Max: 150 caracteres)";
-        
-        
+
+
     }
-  
+
 
 
     if(!$detalles["marca"] || strlen($detalles["marca"]) > 30){
 
-        $errores = "Debes añadir una Marca (Max: 30 caracteres)";
+        $errores[] = "Debes añadir una Marca (Max: 30 caracteres)";
 
     }
 
     if(!$detalles["modelo"] || strlen($detalles["modelo"]) > 30){
 
-        $errores = "Debes añadir un modelo (Max: 50 caracteres)";
+        $errores[] = "Debes añadir un modelo (Max: 50 caracteres)";
 
     }
 
@@ -182,11 +182,23 @@ public function insertarDetalles($id_producto,$detalles){
 
     $query = "INSERT INTO detalles_productos (id_producto,descripcion,marca,modelo) VALUES($id_producto,'$descripcion','$marca','$modelo');";
 
-    
+
 
     $resultado = self::$db->query($query);
 
     return $resultado;
+
+}
+
+public function guardarNombreImagen($nombre,$id_producto){
+
+    $query = "INSERT INTO imagenes_producto (urls,id_producto) VALUES('$nombre',$id_producto);";
+
+    $resultado = self::$db->query($query);
+
+    return $resultado;
+
+
 
 }
 
@@ -221,7 +233,7 @@ public static function obtenerProductosCalidad(){
         $query = "SELECT * FROM imagenes_producto WHERE id_producto = $id;";
         $resultado = self::$db->query($query);
 
-
+        $imagenes = [];
 
 
 

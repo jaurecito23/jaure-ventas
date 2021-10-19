@@ -43,8 +43,8 @@ class ActiveRecord{
             $query .=join("' ,'",array_values($atributos));
             $query .= "');";
 
-           
-        
+
+
 
             $resultado = self::$db->query($query);
 
@@ -52,14 +52,14 @@ class ActiveRecord{
             $idInsertado = self::$db->insert_id;
 
 
-           
+
 
             return array(
-                
+
                 "resultado"=>$resultado,
                 "id_insertado"=>$idInsertado
 
-            ); 
+            );
 
     }
 
@@ -246,11 +246,11 @@ public static function crearObjeto($registro){
 
 
     }
-  
+
     if(static::$tabla == "productos"){
 
         $objeto->imagenes = $objeto->obtenerImagenes();
-        
+
     }
 
     return $objeto;
