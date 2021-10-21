@@ -24,9 +24,9 @@ function eventoMostrarContraseña(){
         if(mostrarContraseña.checked){
 
             inputContraseña.setAttribute("type","text");
-            
+
         }else{
-            
+
             inputContraseña.setAttribute("type","password");
 
 

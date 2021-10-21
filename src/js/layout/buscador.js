@@ -17,7 +17,7 @@ function eventoBuscador() {
 
 let buscador = document.querySelector(".input-buscar");
 
-console.log(buscador);
+//console.log(buscador);
 
 buscador.addEventListener("input",buscar);
 
@@ -81,7 +81,7 @@ function ponerResultadosBuscador(productos) {
 
 
         productos.forEach((producto)=>{
-            console.log(producto);
+            //console.log(producto);
 
             let nombre = producto.nombre;
             nombre = nombre.slice(0,6);

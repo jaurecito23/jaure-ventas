@@ -3,13 +3,13 @@
 
 require "../includes/funciones/app.php";
 
+session_start();
 
  $id_producto = $_POST["id"];
  $id_producto = filter_var($id_producto,FILTER_VALIDATE_INT);
 
 
  $id_usuario = NULL;
- session_start();
 $id_usuario = $_SESSION["id_usuario"] ?? null;
 $existeUsuario = false;
 $resultado = false;

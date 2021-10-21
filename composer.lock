@@ -864,16 +864,16 @@
         },
         {
             "name": "mercadopago/dx-php",
-            "version": "2.4.3",
+            "version": "2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercadopago/sdk-php.git",
-                "reference": "0cc752104164f0bc9b94e3d5b7754016039b822b"
+                "reference": "678f1e059309c5340f928df909e6b747caed2116"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercadopago/sdk-php/zipball/0cc752104164f0bc9b94e3d5b7754016039b822b",
-                "reference": "0cc752104164f0bc9b94e3d5b7754016039b822b",
+                "url": "https://api.github.com/repos/mercadopago/sdk-php/zipball/678f1e059309c5340f928df909e6b747caed2116",
+                "reference": "678f1e059309c5340f928df909e6b747caed2116",
                 "shasum": ""
             },
             "require": {
@@ -910,9 +910,9 @@
             "description": "Mercado Pago PHP SDK",
             "homepage": "https://github.com/mercadopago/sdk-php",
             "support": {
-                "source": "https://github.com/mercadopago/sdk-php/tree/2.4.3"
+                "source": "https://github.com/mercadopago/sdk-php/tree/2.4.4"
             },
-            "time": "2021-09-30T17:36:34+00:00"
+            "time": "2021-10-20T18:08:36+00:00"
         },
         {
             "name": "phpmailer/phpmailer",

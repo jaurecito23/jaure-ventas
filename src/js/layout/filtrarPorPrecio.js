@@ -39,7 +39,7 @@ function eventoFiltrarPorPrecio(){
 function filtrarPorPrecioSlider(){
     let maximo = inputMax.value;
     let minimo = inputMin.value;
-    ////console.log(minimo);
+    //////console.log(minimo);
 
 
     setTimeout(() => {
@@ -48,7 +48,7 @@ function filtrarPorPrecioSlider(){
         let xhr = new XMLHttpRequest();
 
         let datos = new FormData;
-        ////console.log(selectFiltro.value)
+        //////console.log(selectFiltro.value)
 
 
         datos.append("tipo","precioSlider");
@@ -67,10 +67,10 @@ function filtrarPorPrecioSlider(){
           let respuesta = JSON.parse(xhr.responseText);
              // let respuesta = xhr.responseText;
 
-               ////console.log(respuesta);
+               //////console.log(respuesta);
                      let productos = respuesta.productos;
                      let imagenes = respuesta.imagenes;
-                    ////console.log(productos,imagenes);
+                    //////console.log(productos,imagenes);
                     ponerProductosTienda(productos,imagenes);
 
             }

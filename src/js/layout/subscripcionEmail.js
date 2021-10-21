@@ -1,7 +1,7 @@
 
 
 let inputEmailSubscribirse = document.querySelector(".input-email-subscribirse");
-console.log(inputEmailSubscribirse);
+//console.log(inputEmailSubscribirse);
 
 document.addEventListener("DOMContentLoaded",()=>{
 
@@ -19,7 +19,7 @@ function eventoSubscribirse(){
     let btnSubscribirse = document.querySelector(".newsletter-btn");
 
 
-    console.log(btnSubscribirse);
+    //console.log(btnSubscribirse);
 
 
     btnSubscribirse.addEventListener("click",(e)=>{

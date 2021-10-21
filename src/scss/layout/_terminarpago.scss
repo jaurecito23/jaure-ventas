@@ -1,0 +1,116 @@
+.terminarPago{
+
+
+
+
+    margin: 3rem auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3{
+
+        color: $verde;
+        font-size: 3rem;
+
+    }
+
+    h5 span{
+
+        border-bottom: 2px inset $gris;
+
+    }
+
+    h4{
+
+        border-bottom: 2px dotted $gris;
+
+    }
+
+    .total{
+
+        background-color: $verde;
+        border-radius: 1rem;
+        padding: .5rem;
+        color: $blanco;
+        font-weight: bold;
+
+    }
+
+    .pagar{
+
+        display: flex;
+        flex-direction: column;
+        h6{
+
+            color: $gris;
+
+        }
+
+        button,a{
+
+            margin:2rem auto;
+            width: 30%;
+            padding: 1rem 2rem;
+            background-color: $gris;
+            color: $blanco;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: .4rem;
+            transition: all 1s ease;
+            text-align: center;
+            text-decoration: none;
+            @media (max-width: 315px){
+
+                display: block;
+                width: 90%;
+
+            }
+
+        }
+
+        button:hover,a:hover{
+
+            color: $verde;
+            transform:scale(1.2)
+
+        }
+
+        small{
+
+            color: rgba(1,1,1,.3)
+
+        }
+    }
+
+
+    ol{
+        margin: auto;
+        .deposito{
+
+            margin-bottom: 1.2rem;
+        }
+        li{
+
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+
+            span{
+
+                font-size: $gris;
+                font-weight: bold;
+            }
+        }
+
+    }
+
+    .comprobante{
+
+        font-size: 1rem;
+
+    }
+
+}

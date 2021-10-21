@@ -7,10 +7,6 @@ use App\Producto;
 use App\Usuario;
 use App\ProductoCarrito;
 
-
-
-
-
 // use PHPMailer\PHPMailer\PHPMailer;
 
 
@@ -61,6 +57,7 @@ class PaginasController{
             //Obtener id carrito
 
 
+
             $idCarrito = $_SESSION["idCarrito"] ?? null;
 
             if(!$idCarrito){
@@ -69,8 +66,19 @@ class PaginasController{
 
             }
 
+
+
             $productos = ProductoCarrito::obtenerProductosCarrito($idCarrito);
-            $total = $total = ProductoCarrito::obtenerTotal($idCarrito);
+            $total = ProductoCarrito::obtenerTotal($idCarrito);
+            if($total < 850){
+
+                $total += 145;
+            }
+
+
+
+
+
 
 
             // Obtener el usuario si existe
@@ -89,6 +97,57 @@ class PaginasController{
             }
 
 
+            if($_SERVER["REQUEST_METHOD"] === "POST"){
+
+
+
+
+
+                try{
+
+                    $db = conectarDB();
+                    $stmt = $db->prepare("INSERT INTO compras (nombres,apellidos,celular,email,direccion,ciudad,localidad,notas,pagado,idCarrito,total,fecha,notificado,metodo) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+
+                    $nombres = $_POST["usuario"]["nombres"];
+                    $apellidos = $_POST["usuario"]["apellidos"];
+                    $celular = $_POST["usuario"]["celular"];
+                    $email = $_POST["usuario"]["email"];
+                    $direccion = $_POST["usuario"]["direccion"];
+                    $ciudad = $_POST["usuario"]["ciudad"];
+                    $localidad = $_POST["usuario"]["localidad"];
+                    $notas = $_POST["usuario"]["notas"];
+                    $pagado = 0;
+                    $fecha = obtenerFecha("actual");
+                    $notificado = 0;
+                    $metodo = $_POST["payment"];
+
+
+                    $stmt->bind_param("ssssssssiidsis",$nombres,$apellidos,$celular,$email,$direccion,$ciudad,$localidad,$notas,$pagado,$idCarrito,$total,$fecha,$notificado,$metodo);
+
+                    $stmt->execute();
+
+                    if($stmt->affected_rows > 0){
+
+                      header("Location: /accesorios/ventas-jaure/terminarpago?metodo=${metodo}");
+
+                    };
+
+                    $stmt->close();
+                    $db->close();
+
+
+
+                }catch(Exception $e){
+
+
+                    echo $e->getMessage();
+
+                }
+
+
+
+            }
 
                 $categorias = Producto::obtenerCategorias();
                  $pagina = "pagar";
@@ -102,6 +161,88 @@ class PaginasController{
                 "usuario"=>$usuario,
                 "productos"=>$productos,
                 "total"=>$total,
+                "pagina"=>$pagina
+
+            ]);
+
+        }
+        public static function terminarpago(Router $router){
+
+            //Obtener id carrito
+
+
+
+            $idCarrito = $_SESSION["idCarrito"] ?? null;
+
+            if(!$idCarrito){
+
+                header("Location: /accesorios/ventas-jaure");
+
+            }
+
+
+            $metodo = buscarQueryString("metodo");
+
+
+
+            $productos = ProductoCarrito::obtenerProductosCarrito($idCarrito);
+            $total = ProductoCarrito::obtenerTotal($idCarrito);
+            if($total < 850){
+
+                $total += 145;
+            }
+
+
+            // Obtener el usuario si existe
+            $id_usuario = $_SESSION["id_usuario"] ?? null;
+
+            $usuario = null;
+
+            if($id_usuario){
+
+                $usuario = Usuario::find($id_usuario);
+                try{
+                    $db = conectarDB();
+                    $stmt = $db->prepare("UPDATE carritos  SET id_usuario = ? WHERE id_usuario= ?");
+
+
+                    $newUser = 1;
+                    $stmt->bind_param("ii",$newUser,$id_usuario);
+
+
+                    $stmt->execute();
+
+                    $stmt->close();
+                    $db->close();
+
+                }catch(Exception $e){
+
+                    echo $e->getMessage();
+
+                }
+            }else{
+
+                $usuario = new Usuario();
+                $_SESSION["idCarrito"] = null;
+            }
+
+                $categorias = Producto::obtenerCategorias();
+                 $pagina = "terminarpago";
+
+
+
+
+
+
+
+            $router->render('paginas/terminarpago',[
+
+
+                "categorias"=>$categorias,
+                "usuario"=>$usuario,
+                "productos"=>$productos,
+                "total"=>$total,
+                "metodo"=>$metodo,
                 "pagina"=>$pagina
 
             ]);

@@ -53,7 +53,7 @@ function buscarQueryString($var)
     $resultado = explode("${var}", $_SERVER['REQUEST_URI'])[1] ?? null;
 
     if ($resultado !== null) {
-        return intval($resultado);
+        return $resultado;
     } else {
         return $resultado;
     }

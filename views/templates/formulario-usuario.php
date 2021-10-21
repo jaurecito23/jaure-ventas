@@ -31,7 +31,7 @@
 							<?php if($pagina != "crearcuenta"):?>
 								<!-- Order notes -->
 						<div class="order-notes">
-							<textarea class="input" data-tipo="notas" placeholder="Otras Notas"> <?php echo  $usuario->notas; ?> </textarea>
+							<textarea class="input" data-tipo="notas" name="usuario[notas]" placeholder="Otras Notas"> <?php echo  $usuario->notas; ?> </textarea>
 						</div>
 						<!-- /Order notes -->
 						<div class="errores-form">

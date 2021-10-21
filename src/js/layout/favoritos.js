@@ -28,7 +28,7 @@ function eventoAñadirFavorito(){
             let divClick = e.target.parentElement;
             if(divClick.classList.contains("product-btns")){
 
-                ////console.log(divClick,"inlcuye");
+                //////console.log(divClick,"inlcuye");
               id = divClick.childNodes[5].getAttribute("data-id");
 
             }else{
@@ -36,7 +36,7 @@ function eventoAñadirFavorito(){
                id = divClick.parentElement.childNodes[5].getAttribute("data-id");
             }
 
-            ////console.log(id);
+            //////console.log(id);
 
 
 
@@ -55,14 +55,14 @@ function eventoAñadirFavorito(){
 
                     let respuesta = JSON.parse(xhr.responseText);
 
-                    //console.log(respuesta, "agrego favorito");
+                    ////console.log(respuesta, "agrego favorito");
                    //let respuesta = xhr.responseText;
 
                     if(respuesta.existeUsuario){
 
                         if(respuesta.resultado){
 
-                            ////console.log(respuesta);
+                            //////console.log(respuesta);
                              llenarFavoritos();
                             Swal.fire({
                                 icon: "success",
@@ -126,9 +126,9 @@ function llenarFavoritos(){
               let respuesta = JSON.parse(xhr.responseText);
              // let respuesta = xhr.responseText;
 
-             //console.log(respuesta,"LLenar Favoritos");
+             ////console.log(respuesta,"LLenar Favoritos");
 
-             ////console.log(respuesta,"llenando");
+             //////console.log(respuesta,"llenando");
                 ponerProductosFavoritos(respuesta.productos);
 
 
@@ -145,7 +145,7 @@ function ponerProductosFavoritos(productoss){
 
     var listadoFavorito = document.querySelector(".lista-favorito-list");
 
-    ////console.log(listadoFavorito,"listado - favorito");
+    //////console.log(listadoFavorito,"listado - favorito");
 
     // Resetea el listado de productos
 
@@ -155,10 +155,10 @@ function ponerProductosFavoritos(productoss){
          if(productoss.length > 0){
 
 
-             
+
              productoss.forEach((producto)=>{
-                 
-                 
+
+
 
            listadoFavorito.innerHTML += `
                 <div class="product-widget">
@@ -177,11 +177,11 @@ function ponerProductosFavoritos(productoss){
 
     });
 
-}   
-    
+}
+
    setearCantidadFavoritos(cantidadFavoritos);
    eventoBorarFavorito();
-   
+
 }
 
 // Setea en HTML la cantidad de productos
@@ -200,7 +200,7 @@ function setearCantidadFavoritos(cantidad){
 function eventoBorarFavorito(){
 
     let btnBorrar = document.querySelectorAll(".product-widget .delete-favorito");
-    ////console.log(btnBorrar);
+    //////console.log(btnBorrar);
     btnBorrar.forEach((btn)=>{
 
         btn.addEventListener("click",(e)=>{
@@ -221,7 +221,7 @@ function eventoBorarFavorito(){
 
                 borrarProductoFavorito(id);
 
-                ////console.log(id);
+                //////console.log(id);
 
               Swal.fire(
                 'Eliminado',
@@ -260,7 +260,7 @@ function eventoBorarFavorito(){
             if(xhr.status === 200){
 
                     let respuesta = JSON.parse(xhr.responseText);
-                      //console.log(respuesta,"Borro Favorito");
+                      ////console.log(respuesta,"Borro Favorito");
                     llenarFavoritos();
 
 

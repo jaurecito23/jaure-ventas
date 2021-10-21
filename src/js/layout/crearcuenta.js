@@ -1,7 +1,7 @@
 let formularioCrear = document.querySelector(".formulario-crear");
 let formulario = document.querySelector(".formulario");
 
-console.log(formulario);
+//console.log(formulario);
 
 document.addEventListener("DOMContentLoaded",()=>{
 
@@ -375,7 +375,7 @@ function validarNombre(){
 
          if(!valor){
 
-            console.log( e.target.parentElement.childNodes)
+            //console.log( e.target.parentElement.childNodes)
             e.target.parentElement.childNodes[5].style.display = "block";
              errores.push("Debes Seleccionar los términos y condiciones de jaureventas");
              ponerErrores(errores)
@@ -607,7 +607,7 @@ function ponerErrores(errores){
 
     let divErrores = document.querySelector(".errores-form");
 
-    console.log(divErrores);
+    //console.log(divErrores);
 
     divErrores.innerHTML = "";
 

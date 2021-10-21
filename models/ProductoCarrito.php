@@ -163,6 +163,7 @@ public static function obtenerTotal($idCarrito){
 public static function borrarProductoCarrito($idCarrito,$idProducto){
 
     $query = "DELETE FROM productos_carrito WHERE id_carrito = ${idCarrito} AND id_producto = ${idProducto};";
+
     $resultado = self::$db->query($query);
 
     if($resultado){

@@ -48,7 +48,7 @@ function ponerCantidadDePaginas(){
 
 function ponerBtnSiguientes(cantidadProductos){
     // let cantidadProductos = parseInt(cantidadProductos);
-    console.log(cantidadProductos,"cantidad_productos");
+    //console.log(cantidadProductos,"cantidad_productos");
 
 
 
@@ -58,15 +58,15 @@ function ponerBtnSiguientes(cantidadProductos){
 
 
 
-    // console.log(cantidadProductosMostrar, "productos");
-    // console.log(cantidadPaginas, "paginas")
+    // //console.log(cantidadProductosMostrar, "productos");
+    // //console.log(cantidadPaginas, "paginas")
 
     let pagina4ta = paginaActual + 4;
     let diferenciaAlFinal = pagina4ta - cantidadPaginas;
 
-    // console.log(diferenciaAlFinal,"diferenciaFinal");
+    // //console.log(diferenciaAlFinal,"diferenciaFinal");
 
-    // console.log(pagina4ta,"pagina 4ta");
+    // //console.log(pagina4ta,"pagina 4ta");
 
 if(pagina4ta > cantidadPaginas){
 
@@ -97,7 +97,7 @@ if(pagina4ta > cantidadPaginas){
 
  }
 
-//   console.log(pagina4ta,"pagina 4ta");
+//   //console.log(pagina4ta,"pagina 4ta");
 paginacion.innerHTML = "";
 
 if(paginaActual !== 1){
@@ -221,7 +221,7 @@ function cambiarProductosSiguiente(id_categoria,id_ultimo,id_primero,aumentar){
 
     let datos = new FormData;
 
-    console.log(id_primero,"Primer Producto");
+    //console.log(id_primero,"Primer Producto");
 
     datos.append("tipo","cambiarPagina");
     datos.append("id_categoria",id_categoria);
@@ -239,7 +239,7 @@ function cambiarProductosSiguiente(id_categoria,id_ultimo,id_primero,aumentar){
 
           let respuesta = JSON.parse(xhr.responseText);
             //let respuesta =xhr.responseText;
-           // console.log(respuesta);
+           // //console.log(respuesta);
             let productos = respuesta.productos;
          let imagenes = respuesta.imagenes;
          let id_ultimo = respuesta.id_ultimo;
@@ -248,9 +248,9 @@ function cambiarProductosSiguiente(id_categoria,id_ultimo,id_primero,aumentar){
          let id_primer = respuesta.id_primero;
              id_primer_producto = id_primer;
 
-             console.log(id_primer_producto,"id_primero");
-           console.log(respuesta);
-           ////console.log(productos,imagenes);
+             //console.log(id_primer_producto,"id_primero");
+           //console.log(respuesta);
+           //////console.log(productos,imagenes);
             ponerProductosTienda(productos,imagenes);
 
         }

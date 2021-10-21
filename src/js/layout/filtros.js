@@ -30,8 +30,8 @@ if(ultimo_producto){
 
 }
 
-console.log(id_ultimo_producto,"ultimo_id");
-console.log(id_primer_producto,"primer_id");
+//console.log(id_ultimo_producto,"ultimo_id");
+//console.log(id_primer_producto,"primer_id");
 let id_categoria = 1;
 let cantidadProductosMostrar = 6;
 
@@ -48,12 +48,12 @@ if(productosTienda !== null){
 function eventoFiltrarPorCategoria() {
 
     let checkboks = document.querySelectorAll(".filtrar-por-categoria");
-    ////console.log(checkboks);
+    //////console.log(checkboks);
 
     checkboks.forEach((check)=>{
 
         check.addEventListener("change",(e)=>{
-            ////console.log(e.target.checked)
+            //////console.log(e.target.checked)
 
             if(e.target.checked){
 
@@ -151,8 +151,8 @@ function cambiandoCantidad(value){
     let xhr = new XMLHttpRequest();
 
     let datos = new FormData;
-    ////console.log(selectFiltro.value)
-    ////console.log(value)
+    //////console.log(selectFiltro.value)
+    //////console.log(value)
 
     datos.append("tipo","cantidad");
     datos.append("id_categoria",id_categoria);
@@ -170,7 +170,7 @@ function cambiandoCantidad(value){
       let respuesta = JSON.parse(xhr.responseText);
       //      let respuesta = xhr.responseText;
 
-           // ////console.log(respuesta);
+           // //////console.log(respuesta);
                 let productos = respuesta.productos;
                 let imagenes = respuesta.imagenes;
 
@@ -179,9 +179,9 @@ function cambiandoCantidad(value){
                 let id_primero = respuesta.id_primero;
                 id_primer_producto = id_primero;
 
-                console.log(id_primer_producto,"id_primero");
+                //console.log(id_primer_producto,"id_primero");
 
-                console.log(productos,imagenes);
+                //console.log(productos,imagenes);
                 ponerProductosTienda(productos,imagenes);
 
         }
@@ -222,10 +222,10 @@ function filtrarPorDescuento(id_categoria){
             let id_primero = respuesta.id_primero;
             id_primer_producto = id_primero;
 
-            console.log(id_primer_producto,"id_primero");
+            //console.log(id_primer_producto,"id_primero");
 
-          //console.log(productos);
-         console.log(productos,imagenes);
+          ////console.log(productos);
+         //console.log(productos,imagenes);
             ponerProductosTienda(productos,imagenes);
 
         }
@@ -237,7 +237,7 @@ function filtrarPorDescuento(id_categoria){
 }
 function filtrarPorMarca(marca){
 
-    ////console.log(marca);
+    //////console.log(marca);
     let xhr = new XMLHttpRequest();
 
     let datos = new FormData;
@@ -259,11 +259,11 @@ function filtrarPorMarca(marca){
 
         let respuesta = JSON.parse(xhr.responseText);
           // let respuesta =xhr.responseText;
-         //  ////console.log(respuesta);
+         //  //////console.log(respuesta);
            let productos = respuesta.productos;
              let imagenes = respuesta.imagenes;
 
-           ////console.log(productos,imagenes);
+           //////console.log(productos,imagenes);
           ponerProductosTienda(productos,imagenes);
 
         }
@@ -305,10 +305,10 @@ function filtrarPorPrecio(id_categoria){
             let id_primero = respuesta.id_primero;
             id_primer_producto = id_primero;
 
-            console.log(id_primer_producto,"id_primero");
+            //console.log(id_primer_producto,"id_primero");
 
-           console.log(respuesta);
-           ////console.log(productos,imagenes);
+           //console.log(respuesta);
+           //////console.log(productos,imagenes);
            ponerProductosTienda(productos,imagenes);
 
         }

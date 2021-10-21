@@ -34,9 +34,10 @@
 							<button class="button seleccionado">Pagar con mi Cuenta</button>
 						<?php endif; ?>
 
-				</div>
+						</div>
 
-				<form class="formulario formulario-datos-pagar .formulario-datos-cuenta">
+					<form method="POST" >
+				<div class="formulario formulario-datos-pagar .formulario-datos-cuenta">
 					<div class="col-md-7">
 						<!-- Billing Details -->
 
@@ -53,7 +54,7 @@
 
 
 					</div>
-				</form>
+						</div>
 
 
 					<!-- Order Details -->
@@ -99,13 +100,13 @@
 
 							<div class="order-col">
 								<div>Envio</div>
-								<?php if(intval($total) > 450):?>
+								<?php if(intval($total) > 850):?>
 									<div><strong>FREE</strong></div>
 									<?php else: ?>
-										<div><strong>$65</strong></div>
+										<div><strong>$145</strong><small>(A todo el pais).</small></div>
 										<?php endif;?>
 									</div>
-									<p style="color: grey;">En compras mayores a $450, el envio es gratis.</p>
+									<p style="color: grey;">En compras mayores a $850, el envio es gratis.</p>
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
 								<div><strong class="order-total">$<?php echo $total;?></strong></div>
@@ -118,17 +119,17 @@
 
 
 							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-1">
+								<input type="radio" name="payment" value="transferencia" id="payment-1">
 								<label for="payment-1">
 									<span></span>
 									Transferencia Bancaria
 								</label>
 								<div class="caption">
-									<p>Nuestra cuenta 625710735672, te escribiremos para que nos envies el comprobante.</p>
+									<p>Actualmente no aceptamos transferencias bancarias como medio de pago.</p>
 								</div>
 							</div>
 							<div class="input-radio">
-								<input type="radio" checked name="payment" id="payment-2">
+								<input type="radio" name="payment" value="mercadopagos" id="payment-2">
 								<label for="payment-2">
 									<span></span>
 									Mercado Pagos
@@ -138,7 +139,7 @@
 								</div>
 							</div>
 							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-3">
+								<input type="radio" name="payment"  value="paypal"  id="payment-3">
 								<label for="payment-3">
 									<span></span>
 									Paypal
@@ -148,26 +149,33 @@
 								</div>
 							</div>
 							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-4">
+								<input type="radio" name="payment"  value="abitab"  checked  id="payment-4">
 								<label for="payment-4">
 									<span></span>
 									Abitab
 								</label>
 								<div class="caption">
-									<p>Con tu tarjeta prex o deposito en abitab, numero de c.i: 52763432, nombre Facundo Jauregui</p>
+									<p>Con tu tarjeta prex o deposito en abitab,N° de c.i: 52763432,a nombre de Facundo Jauregui</p>
 								</div>
 							</div>
 							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-5">
+								<input type="radio"  name="payment" value="redpagos" id="payment-5">
 								<label for="payment-5">
 									<span></span>
 									Redpagos
 								</label>
 								<div class="caption">
-									<p>Con tu tarjeta midinero o deposito en redpagos,numero de cuenta:  ,numero de c.i: 52763432, nombre Facundo Jauregui</p>
+									<p>Con tu tarjeta midinero(en la App) o deposito en redpagos, N° de cuenta: 9603294 , N° de c.i: 52763432, nombre Facundo Jauregui</p>
 								</div>
 							</div>
 						</div>
+
+						<div class="div-Btn-Pago" style="color:red; display:none;">
+						<h3 style="color:red; text-decoration: underline;">Actualmente no dsiponible</h3>
+                    	<p>Porfavor selecciona otro metodo.</p>
+                    	<p>Estamos trabajando para habilitarlos pronto.</p>
+					</div>
+
 						<div class="input-checkbox">
 							<input type="checkbox" checked require disabled id="terms">
 							<label for="terms">
@@ -175,12 +183,9 @@
 								Acepto los <a href="#">terminos & condiciones de jaureventas.</a>
 							</label>
 						</div>
-						<a href="#" style="display: none" class="primary-btn order-submit btn-terminar">Terminar Orden</a>
+						<button type="submit" style="" class="primary-btn order-submit btn-terminar">Terminar Orden</button>
+			</form>
 
-					<div class="div-Btn-Pago">
-
-
-					</div>
 
 					</div>
 					<!-- /Order Details -->

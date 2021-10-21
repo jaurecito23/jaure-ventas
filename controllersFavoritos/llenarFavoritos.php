@@ -5,8 +5,8 @@ require "../includes/funciones/app.php";
 
 
 
-$id_usuario = NULL;
 session_start();
+$id_usuario = NULL;
 
 
 $id_usuario = $_SESSION["id_usuario"] ?? null;
@@ -15,7 +15,7 @@ $existeUsuario = false;
 
 $resultado = false;
 
- 
+
 
 $productos = [];
 
@@ -26,7 +26,7 @@ try{
     $stmtt->bind_param("i",$id_usuario);
     $stmtt->execute();
 
-    // Obtener resultado de favoritos 
+    // Obtener resultado de favoritos
     $resultado = $stmtt->get_result();
 
 
@@ -36,16 +36,16 @@ try{
         $existeUsuario = true;
 
     }
-    
-    // Por cada favorito existente: 
+
+    // Por cada favorito existente:
     while($favorito = mysqli_fetch_assoc($resultado)){
         $id_producto = $favorito["id_producto"];
         $producto = null;
-        
+
         // Obtiene el producto
         try{
 
-            $stmt = $db->prepare("SELECT * FROM productos WHERE id = ? LIMIT 1;");    
+            $stmt = $db->prepare("SELECT * FROM productos WHERE id = ? LIMIT 1;");
             $stmt->bind_param("i",$id_producto);
             $stmt->execute();
 
@@ -55,18 +55,18 @@ try{
 
             $stmt->close();
             //$db->close();
-          
-    
+
+
         }catch(Exception $e){
-    
+
             echo "Error". $e->getMessage();
-    
+
         }
-       
+
         // Obtiene las imagenes
         try{
 
-            $stmt = $db->prepare("SELECT * FROM imagenes_producto WHERE id_producto = ? LIMIT 1;");    
+            $stmt = $db->prepare("SELECT * FROM imagenes_producto WHERE id_producto = ? LIMIT 1;");
             $stmt->bind_param("i",$id_producto);
             $stmt->execute();
 
@@ -74,20 +74,20 @@ try{
             $imagen = mysqli_fetch_assoc($imagenes);
             $producto["imagen"] = $imagen["urls"];
             $productos[] = $producto;
-            
+
 
 
             $stmt->close();
             //$db->close();
-          
-    
+
+
         }catch(Exception $e){
-    
+
             echo "Error". $e->getMessage();
-    
+
         }
-       
-     
+
+
 
 
 
@@ -115,7 +115,7 @@ try{
 //    $query = "SELECT * FROM favoritos WHERE id_usuario=$id_usuario";
 //    $resultado = mysqli_query($db, $query);
 
- 
+
 
 
 

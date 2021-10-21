@@ -5,7 +5,10 @@ require "../includes/funciones/app.php";
 
 use App\ProductoCarrito;
 
-$idProducto = $_POST["id"];
+session_start();
+
+
+$idProducto = $_POST["id"] ?? 14;
 $idProducto = intval($idProducto);
 $idProducto = filter_var($idProducto,FILTER_VALIDATE_INT);
 
@@ -23,8 +26,13 @@ if(!isset($_SESSION["id_usuario"]) ){
     $idCarrito = ProductoCarrito::obtenerIdCarrito($id_usuario);
     $_SESSION["idCarrito"] = $idCarrito;
 }
+
 $resultado = ProductoCarrito::borrarProductoCarrito($idCarrito,$idProducto);
 
-echo $resultado;
+echo json_encode(array(
+
+    "resultado"=>$resultado
+
+));
 
 ?>

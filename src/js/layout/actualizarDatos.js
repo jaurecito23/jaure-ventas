@@ -64,7 +64,7 @@ function mostrarAlertaActualizado(respuesta){
     let tipo = respuesta.tipo;
     let resultado = respuesta.resultado;
 
-    console.log(resultado);
+    //console.log(resultado);
     if(resultado){
 
         Swal.fire({

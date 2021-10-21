@@ -30,7 +30,7 @@ function eventoVistaRapida(){
         });
 
     });
-//console.log("HOLA")
+////console.log("HOLA")
 
 
 }

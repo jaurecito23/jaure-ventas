@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded",()=>{
 
-    
+
     llenarCarrito();
     eventoAñadirCarrito();
-    
-    
+
+
     eventoBorarCarrito();
     llenarFavoritos();
 
@@ -24,8 +24,8 @@ function eventoAñadirCarrito(){
 
             let id = e.target.getAttribute("data-id");
 
-         
-            //console.log(id);
+
+            ////console.log(id);
 
             let datos = new FormData();
 
@@ -42,8 +42,8 @@ function eventoAñadirCarrito(){
                     let respuesta = JSON.parse(xhr.responseText);
                     // let respuesta = xhr.responseText;
 
-                    console.log(respuesta,"agregando a carrito")
-                 
+                    //console.log(respuesta,"agregando a carrito")
+
 
                     if(respuesta){
 
@@ -67,7 +67,7 @@ function eventoAñadirCarrito(){
 
                     }
 
-                    //console.log(respuesta);
+                    ////console.log(respuesta);
 
                 }
 
@@ -85,24 +85,24 @@ function eventoAñadirCarrito(){
 
 
 function llenarCarrito (){
- 
+
     // Obtiene y llena el carrito
     xhr = new XMLHttpRequest();
 
     xhr.open("GET","../controllersCarritos/llenarCarrito.php",false);
-    
+
 
 
     xhr.onload = function(){
-        
+
         if(xhr.status === 200){
 
             let respuesta = JSON.parse(xhr.responseText);
           // let respuesta = xhr.responseText;
-            console.log(respuesta,"llenar Carrito");
+            //console.log(respuesta,"llenar Carrito");
 
             ponerProductosCarrito(respuesta);
-            
+
 
             setTimeout(() => {
                 obtenerTotal();
@@ -122,7 +122,7 @@ function ponerProductosCarrito(productos){
 
     var listadoCarrito = document.querySelector(".lista-carrito");
 
-    //console.log(productos,"productos");
+    ////console.log(productos,"productos");
 
     // Resetea el listado de productos
 
@@ -139,17 +139,18 @@ function ponerProductosCarrito(productos){
             cantidadAnterior++;
         productoAnterior.textContent = cantidadAnterior;
 
-            //console.log("ES NULL");
+            ////console.log("ES NULL");
 
        }else{
 
 
            listadoCarrito.innerHTML += `
-                <div class="product-widget">
-                <div class="product-img">
-                   <img src="../imagenes_productos/${producto.imagenes[0]}" alt="">
+                <div class="product-widget" data-id="${producto.id}">
+                <div class="product-img"data-id="${producto.id}" >
+                <a href="producto?id=${producto.id}"> <img src="../imagenes_productos/${producto.imagenes[0]}" alt=""></a>
+
                    </div>
-               <div class="product-body">
+               <div class="product-body" data-id="${producto.id}">
                <h3 class="product-name"><a href="producto?id=${producto.id}">${producto.nombre}</a></h3>
                <h4 class="product-price precio-producto"><span data-id=${producto.id} class="qty cantidad">1x</span>$${producto.precio}</h4>
               </div>
@@ -215,10 +216,10 @@ function obtenerTotal(){
             // let respuesta = xhr.responseText;
             // Setea el total en el HTML
            setearTotal(respuesta)
-           console.log(respuesta,"total");
+           //console.log(respuesta,"total");
         }
 
-        //console.log(total);
+        ////console.log(total);
     }
 
     xhr.send();
@@ -234,12 +235,15 @@ function obtenerTotal(){
 function eventoBorarCarrito(){
 
     let btnBorrar = document.querySelectorAll(".product-widget .delete-carrito");
-    //console.log(btnBorrar);
+    ////console.log(btnBorrar);
     btnBorrar.forEach((btn)=>{
 
         btn.addEventListener("click",(e)=>{
 
            let id = e.target.parentElement.getAttribute("data-id");
+
+
+
 
            Swal.fire({
             title: '¿Estas Seguro?',
@@ -255,13 +259,10 @@ function eventoBorarCarrito(){
 
                 borrarProducto(id);
 
-                //console.log(id);
 
-              Swal.fire(
-                'Eliminado',
-                'Se ha eliminado Correctamente',
-                'success'
-              )
+                ////console.log(id);
+
+
             }});
 
 
@@ -293,8 +294,27 @@ function eventoBorarCarrito(){
 
             if(xhr.status === 200){
 
-                    let respuesta = xhr.responseText;
-                      //console.log(respuesta);
+                    let respuesta = JSON.parse(xhr.responseText);
+
+
+                    if(respuesta.resultado){
+
+                        Swal.fire(
+                            'Eliminado',
+                            'Se ha eliminado Correctamente',
+                            'success'
+                          )
+
+                    }else{
+
+                        Swal.fire(
+                            'Error',
+                            'Hubo un error al intentar eliminarlo, intenta nuevamente',
+                            'success'
+                          )
+
+                    };
+
                     llenarCarrito();
 
 
