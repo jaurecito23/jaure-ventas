@@ -5,6 +5,7 @@
 
      use Controllers\PaginasController;
      use Controllers\AdminController;
+     use Controllers\PagarController;
      use MVC\Router;
      use App\Producto;
 
@@ -23,13 +24,15 @@ $router = new Router();
 $router->get("/",[PaginasController::class,"home"]);
 $router->get("/producto",[PaginasController::class,"producto"]);
 $router->get("/tienda",[PaginasController::class,"tienda"]);
-$router->get("/pagar",[PaginasController::class,"pagar"]);
 $router->get("/crearcuenta",[PaginasController::class,"crearcuenta"]);
 $router->get("/cerrarsession",[PaginasController::class,"cerrarsession"]);
 $router->get("/micuenta",[PaginasController::class,"micuenta"]);
 $router->get("/ingresar",[PaginasController::class,"ingresar"]);
 $router->get("/cambiarcontrasena",[PaginasController::class,"cambiarcontrasena"]);
-$router->get("/terminarpago",[PaginasController::class,"terminarpago"]);
+$router->get("/pagar",[PagarController::class,"pagar"]);
+$router->get("/terminarpago",[PagarController::class,"terminarpago"]);
+$router->get("/resultadopagar",[PagarController::class,"resultadopagar"]);
+
 
 
 // Paginas Admin
@@ -44,7 +47,7 @@ $router->get("/admin",[AdminController::class,"admin"]);
 $router->post("/cambiarcontrasena",[PaginasController::class,"cambiarcontrasena"]);
 $router->post("/crearcuenta",[PaginasController::class,"crearcuenta"]);
 $router->post("/ingresar",[PaginasController::class,"ingresar"]);
-$router->post("/pagar",[PaginasController::class,"pagar"]);
+$router->post("/pagar",[PagarController::class,"pagar"]);
 
 // Paginas Admin
 $router->comprobarRutas();

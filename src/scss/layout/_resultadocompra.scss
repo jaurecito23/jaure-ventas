@@ -1,0 +1,46 @@
+.resultado_compra{
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem auto;
+    text-align: center;
+
+    h3{
+
+        color: $verde;
+
+    }
+
+    h2{
+
+        font-size: 2rem;
+
+    }
+
+    h1{
+
+        font-size: 2.2rem;
+
+
+    }
+
+    .btn{
+
+        background-color: $verde;
+        color: $blanco;
+        border-radius: 1rem;
+        font-weight: bold;
+        transition: all 1s ease;
+    }
+
+    .btn:hover{
+
+        color: $gris;
+        padding: 1.001rem;
+
+    }
+
+}

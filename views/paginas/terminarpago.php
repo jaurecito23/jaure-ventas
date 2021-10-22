@@ -36,7 +36,7 @@
             <br>
             <p class="comprobante">¡Te escribiremos para que nos envies el comprobante!</p>
 
-            <a href="/accesorios/ventas-jaure">Terminar</a>
+            <a class="btn-pagar" href="/accesorios/ventas-jaure">Terminar</a>
         <?php endif;?>
         <?php if($metodo == "redpagos"): ?>
             <p>Debes hacer tu pago por: </p>
@@ -58,16 +58,39 @@
             <br>
             <small>¡Te escribiremos para que nos envies el comprobante!</small>
 
-            <a href="/accesorios/ventas-jaure">Terminar</a>
+            <a class="btn-pagar" href="/accesorios/ventas-jaure">Terminar</a>
         <?php endif;?>
 
         <?php if($metodo == "mercadopagos"): ?>
-            <p>Términa ahora mismo tu pago: </p>
+            <p>Pulsa para pagar : </p>
+            <!-- // SDK MercadoPago.js V2 -->
+            <script src="https://sdk.mercadopago.com/js/v2"></script>
 
             <div class="btn-mercado-pago">
 
 
            </div>
+            <br>
+
+                <script>
+                // Agrega credenciales de SDK
+                const mp = new MercadoPago('APP_USR-884bf82e-e11f-4527-807d-4ef5df12c255', {
+                        locale: 'es-UY'
+                });
+
+                // Inicializa el checkout
+                mp.checkout({
+                    preference: {
+                        id: '<?php echo $preference->id; ?>'
+                    },
+                    render: {
+                            container: '.btn-mercado-pago', // Indica el nombre de la clase donde se mostrará el botón de pago
+                            label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+                    }
+                });
+                </script>
+
+
         <?php endif;?>
 
         <?php if($metodo == "paypal"): ?>

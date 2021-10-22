@@ -1,0 +1,73 @@
+.whatsapp{
+
+    position: fixed;
+    width: 15%;
+    height: 15%;
+    z-index: 1000;
+    right: 4%;
+    bottom: 1%;
+
+    @include tablet-chica{
+
+        width: 10%;
+        height: 10%;
+        bottom: 5%;
+        right: 3%;
+
+
+    }
+    @include tablet-grande{
+
+        width: 5%;
+        height: 5%;
+        bottom: 10%;
+        right: 5%;
+
+
+    }
+
+    a{
+
+        img{
+
+            width: 100%;
+
+        }
+
+    }
+
+
+    transition: transform 3s ease;
+
+
+
+}
+
+.whatsapp:hover{
+
+    transform: rotate(350deg);
+
+}
+
+.animacion-whatsapp{
+
+    animation-name: whatsapp;
+    animation-duration: 2s;
+
+}
+
+@keyframes whatsapp {
+
+    0%{transform: scale(0.6);}
+    50%{transform: scale(0.9);}
+    75%{transform: rotate(8deg);}
+    80%{transform: rotate(-8deg)}
+    85%{transform: rotate(8deg);}
+    90%{transform: rotate(-8deg);}
+    92%{transform: translateX(2rem);}
+    97%{transform: translateX(-2rem);}
+    98%{transform: rotate(8deg);}
+    99%{transform: rotate(-8deg);}
+    100%{transform: scale(1);}
+
+}

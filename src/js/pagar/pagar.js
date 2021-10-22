@@ -26,13 +26,13 @@ function eventoElegirMetodoPago(){
             let idPago = e.target.id;
 
 
-            if(idPago == "payment-4" || idPago == "payment-5"){
+            if(idPago == "payment-4" || idPago == "payment-5" || idPago == "payment-2"){
 
 
                 btnTerminar.style.display = "block";
                 divBtnPago.style.display = "none";
 
-            }else if( idPago == "payment-1" || idPago == "payment-2" || idPago == "payment-3"){
+            }else if( idPago == "payment-1"  || idPago == "payment-3"){
 
 
                 btnTerminar.style.display = "none";

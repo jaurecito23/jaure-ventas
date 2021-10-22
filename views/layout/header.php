@@ -196,3 +196,11 @@
 			<!-- /container -->
 		</nav>
 		<!-- /NAVIGATION -->
+
+		<!-- whatsapp -->
+		<div class="whatsapp animacion-whatsapp">
+
+			<a href="https://api.whatsapp.com/send?phone=59893693110&text=Hola,%20%C2%BF%20como%20est%C3%A1n%20?,%20tengo%20una%20duda%20,%20podr%C3%ADan%20ayudarme..." class=""><img src="/accesorios/img/whatsapp.png"></a>
+
+		</div>
+		<!-- whatsapp -->
