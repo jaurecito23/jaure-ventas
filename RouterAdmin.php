@@ -61,15 +61,16 @@ class RouterAdmin
         //Arreglo de rutas protegidas...
 
         // $rutas_protegidas = ['/admin','/admin/crear','admin/actualizar'];
-         $rutas_protegidas = [];
+          $rutas_protegidas = ["/","/crearadmin","/crearproducto","/verproductos","/crearadmin"];
 
-        $auth = $_SESSION["login"] ?? NULL;
+
+        $auth = $_SESSION["usuario"] ?? NULL;
 
         //Proteger las rutas
 
          if(in_array($urlActual,$rutas_protegidas) && !$auth ){
 
-            header("Location: /auriculares-premium/auriculares-premium");
+            header("Location: /accesorios/admin/login");
 
          }
 
@@ -110,13 +111,15 @@ class RouterAdmin
 
         ob_start();
 
-        include __DIR__ . "/admin/templates/$view.php";
 
-        // Get_clean Limpiamos la memoria $contenido almacena la view que le pasamos
+            include __DIR__ . "/admin/templates/$view.php";
 
-        $contenido = \ob_get_clean();
+            // Get_clean Limpiamos la memoria $contenido almacena la view que le pasamos
 
-        include __DIR__ . "/admin/templates/layout/layout.php";
+            $contenido = \ob_get_clean();
+
+                include __DIR__ . "/admin/templates/layout/layout.php";
+
 
     }
 

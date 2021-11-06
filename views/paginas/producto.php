@@ -143,17 +143,22 @@
 										</div>
 									</div>
 								</div>
-								<!-- /tab1  -->
-
-								<!-- tab2  -->
-								<div id="tab2" class="tab-pane fade in">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											<p><?php echo $detalles["descripcion"]; ?></p>
+										</div>
+										<div class="col-md-12">
+											<p>Marca: <?php echo $detalles["marca"]; ?></p>
+										</div>
+										<div class="col-md-12">
+											<p>Modelo: <?php echo $detalles["modelo"]; ?></p>
 										</div>
 									</div>
 								</div>
-								<!-- /tab2  -->
+									
+								</div>
+								<!-- /tab1  -->
+								
 
 								<!-- tab3  -->
 								<div id="tab3" class="tab-pane fade in">
@@ -162,8 +167,8 @@
 										<div class="col-md-3">
 											<div id="rating">
 												<div class="rating-avg">
-													<span>4.5</span>
-													<div class="rating-stars">
+													<span class="promedio">4.5</span>
+													<div class="rating-stars promedio-estrellas">
 														<i class="fa fa-star"></i>
 														<i class="fa fa-star"></i>
 														<i class="fa fa-star"></i>
@@ -181,9 +186,9 @@
 															<i class="fa fa-star"></i>
 														</div>
 														<div class="rating-progress">
-															<div style="width: 80%;"></div>
+															<div class="barra_5" style="width: 80%;"></div>
 														</div>
-														<span class="sum">3</span>
+														<span class="sum puntaje_5">3</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -194,9 +199,9 @@
 															<i class="fa fa-star-o"></i>
 														</div>
 														<div class="rating-progress">
-															<div style="width: 60%;"></div>
+															<div class="barra_4" style="width: 60%;"></div>
 														</div>
-														<span class="sum">2</span>
+														<span class="sum puntaje_4">2</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -207,9 +212,9 @@
 
 														</div>
 														<div class="rating-progress">
-															<div></div>
+															<div class="barra_3" ></div>
 														</div>
-														<span class="sum">0</span>
+														<span class="su puntaje_3">0</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -220,9 +225,9 @@
 															<i class="fa fa-star-o"></i>
 														</div>
 														<div class="rating-progress">
-															<div></div>
+															<div class="barra_2"></div>
 														</div>
-														<span class="sum">0</span>
+														<span class="sum puntaje_2">0</span>
 													</li>
 													<li>
 														<div class="rating-stars">
@@ -233,9 +238,9 @@
 															<i class="fa fa-star-o"></i>
 														</div>
 														<div class="rating-progress">
-															<div></div>
+															<div class="barra_1"></div>
 														</div>
-														<span class="sum">0</span>
+														<span class="sum puntaje_1">0</span>
 													</li>
 												</ul>
 											</div>
@@ -245,55 +250,10 @@
 										<!-- Reviews -->
 										<div class="col-md-6">
 											<div id="reviews">
-												<ul class="reviews">
-													<li>
-														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
-															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
-													<li>
-														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
-															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
-													<li>
-														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
-															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
+												<ul class="reviews opiniones_usuarios">
+													
+
+
 												</ul>
 												<ul class="reviews-pagination">
 													<li class="active">1</li>
@@ -309,21 +269,21 @@
 										<!-- Review Form -->
 										<div class="col-md-3">
 											<div id="review-form">
-												<form class="review-form">
-													<input class="input" type="text" placeholder="Your Name">
-													<input class="input" type="email" placeholder="Your Email">
-													<textarea class="input" placeholder="Your Review"></textarea>
+												<form class="review-form formulario-puntaje" data-id="<?php echo $producto->id;?>">
+													<input class="input opinion-nombre" type="text" placeholder="Tu Nombre">
+													<input class="input opinion-email" type="text" placeholder="Tu Email o Celular">
+													<textarea class="input opinion-opinion" placeholder="Tu Opinion del Producto"></textarea>
 													<div class="input-rating">
-														<span>Your Rating: </span>
+														<span>Puntaje: </span>
 														<div class="stars">
-															<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-															<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-															<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-															<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-															<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+															<input id="star5" class="opinion-puntaje" name="rating" value="5" type="radio"><label for="star5"></label>
+															<input id="star4" class="opinion-puntaje" name="rating"  value="4" type="radio"><label for="star4"></label>
+															<input id="star3" class="opinion-puntaje" name="rating" value="3" type="radio"><label for="star3"></label>
+															<input id="star2" class="opinion-puntaje" name="rating" value="2" type="radio"><label for="star2"></label>
+															<input id="star1" class="opinion-puntaje" name="rating" value="1" type="radio"><label for="star1"></label>
 														</div>
 													</div>
-													<button class="primary-btn">Submit</button>
+													<button class="primary-btn">Enviar</button>
 												</form>
 											</div>
 										</div>
@@ -358,6 +318,9 @@
 
                             <?php foreach($productos as $producto): ?>
 
+								<?php
+											$imagenes = $producto->obtenerImagenes();
+										?>
 					<!-- product -->
 					<div class="col-md-3 col-xs-6">
 						<!-- product -->

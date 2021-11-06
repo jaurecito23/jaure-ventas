@@ -184,7 +184,7 @@ public static function obtenerProductos($id_categoria = null, $cantidad = 6){
 
     }else{
 
-        $query = "SELECT * FROM ".static::$tabla." WHERE id_categoria = $id_categoria ORDER BY precio DESC LIMIT $cantidad ;";
+        $query = "SELECT * FROM ".static::$tabla." WHERE id_categoria = $id_categoria ORDER BY id DESC LIMIT $cantidad ;";
 
 
     }

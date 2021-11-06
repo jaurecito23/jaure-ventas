@@ -18,14 +18,6 @@ const paths = {
     imagenes: 'src/img/**/*'
 }
 
-const pathsAdmin = {
-
-    scss: 'admin/src/scss/**/*.scss',
-    js: 'admin/src/js/**/*.js',
-    imagenes: 'admin/src/img/**/*'
-
-}
-
 // css es una función que se puede llamar automaticamente
 function css() {
     return src(paths.scss)
@@ -69,52 +61,5 @@ function watchArchivos() {
     watch( paths.imagenes, imagenes );
     watch( paths.imagenes, versionWebp );
 }
-// css es una función que se puede llamar automaticamente
 
-
-//________________________________________________//////////////////
-
-function cssAdmin() {
-    return src(pathsAdmin.scss)
-        .pipe(sourcemaps.init())
-        .pipe(sass())
-        .pipe(postcss([autoprefixer(), cssnano()]))
-        // .pipe(postcss([autoprefixer()]))
-        .pipe(sourcemaps.write('.'))
-        .pipe( dest('./admin/build/css') );
-}
-
-
-function javascriptAdmin() {
-    return src(pathsAdmin.js)
-      .pipe(sourcemaps.init())
-      .pipe(concat('bundle.js')) // final output file name
-      .pipe(terser())
-      .pipe(sourcemaps.write('.'))
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(dest('./admin/build/js'))
-}
-
-function imagenesAdmin() {
-    return src(pathsAdmin.imagenes)
-        .pipe(cache(imagemin({ optimizationLevel: 3})))
-        .pipe(dest('./admin/build/img'))
-        .pipe(notify({ message: 'Imagen Completada'}));
-}
-
-function versionWebpAdmin() {
-    return src(pathsAdmin.imagenes)
-        .pipe( webp() )
-        .pipe(dest('./admin/build/img'))
-        .pipe(notify({ message: 'Imagen Completada'}));
-}
-
-
-function watchArchivosAdmin() {
-    watch( pathsAdmin.scss, cssAdmin );
-    watch( pathsAdmin.js, javascriptAdmin );
-    watch( pathsAdmin.imagenes, imagenesAdmin );
-    watch( pathsAdmin.imagenes, versionWebpAdmin );
-}
-
-exports.default = parallel(css, javascript,  imagenes, versionWebp, watchArchivos, cssAdmin, javascriptAdmin, imagenesAdmin, versionWebpAdmin, watchArchivosAdmin);
+exports.default = parallel(css, javascript,  imagenes, versionWebp, watchArchivos );

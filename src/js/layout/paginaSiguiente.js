@@ -34,7 +34,10 @@ function ponerCantidadDePaginas(){
 
                  let respuesta = xhr.responseText;
                  //      let respuesta = xhr.responseText;
-                ponerBtnSiguientes(respuesta);
+
+
+                 ponerBtnSiguientes(respuesta);
+
                }
 
     }
@@ -48,11 +51,12 @@ function ponerCantidadDePaginas(){
 
 function ponerBtnSiguientes(cantidadProductos){
     // let cantidadProductos = parseInt(cantidadProductos);
-    //console.log(cantidadProductos,"cantidad_productos");
+    console.log(cantidadProductos,"cantidad_productos");
 
 
 
-
+    // Calcula la cantidad de paginas disponibles para ver
+    // La variable cantidadProductos Mostrar se encuentra en filtrosCantidadDescuento.js
 
     let cantidadPaginas = (((cantidadProductos - cantidadProductos % cantidadProductosMostrar) ) / cantidadProductosMostrar) + 1;
 
@@ -68,6 +72,8 @@ function ponerBtnSiguientes(cantidadProductos){
 
     // //console.log(pagina4ta,"pagina 4ta");
 
+
+    // La pagina 4ta dependiendo de las paginas restantes
 if(pagina4ta > cantidadPaginas){
 
     switch(diferenciaAlFinal){
@@ -215,13 +221,31 @@ function cambiarPagina(paginaProxima) {
 }
 
 
+/// Esta variable es para que traiga los productos de la página anterior que estan entre este y el ultimo
+let id_ante_ultimo = {
+    ides: new Array(),
+    clicks: 0
+};
+
 function cambiarProductosSiguiente(id_categoria,id_ultimo,id_primero,aumentar){
 
     let xhr = new XMLHttpRequest();
 
     let datos = new FormData;
 
-    //console.log(id_primero,"Primer Producto");
+    console.log(id_primero,"Primer Producto");
+    console.log(id_ultimo,"ultimo Producto");
+
+    console.log(id_ante_ultimo, "ide anteultimo");
+
+    console.log(aumentar);
+
+    if(aumentar){
+
+        id_ante_ultimo.ides.push(id_primero);
+        id_ante_ultimo.clicks += 1;
+
+    }
 
     datos.append("tipo","cambiarPagina");
     datos.append("id_categoria",id_categoria);
@@ -230,6 +254,24 @@ function cambiarProductosSiguiente(id_categoria,id_ultimo,id_primero,aumentar){
     datos.append("id_primero",id_primero);
     datos.append("aumentar",aumentar);
 
+    let click = id_ante_ultimo.clicks - 1;
+    let id_anterior_ultimo = id_ante_ultimo.ides[click];
+
+    console.log(click,"click actual");
+    console.log(id_anterior_ultimo,"anteultmo");
+    datos.append("id_ante_ultimo",id_anterior_ultimo);
+
+
+
+    if(!aumentar){
+
+        id_ante_ultimo.ides.pop();
+        id_ante_ultimo.clicks -= 1;
+
+    }
+
+
+
 
     xhr.open("POST","../controllersFiltros/filtrarPrecioDescuento.php",true);
 
@@ -237,21 +279,31 @@ function cambiarProductosSiguiente(id_categoria,id_ultimo,id_primero,aumentar){
 
         if(xhr.status === 200){
 
-          let respuesta = JSON.parse(xhr.responseText);
+            let respuesta = JSON.parse(xhr.responseText);
             //let respuesta =xhr.responseText;
-           // //console.log(respuesta);
+            console.log(respuesta);
+
+
             let productos = respuesta.productos;
-         let imagenes = respuesta.imagenes;
-         let id_ultimo = respuesta.id_ultimo;
-             id_ultimo_producto = id_ultimo;
+            let imagenes = respuesta.imagenes;
+            let id_ultimo = respuesta.id_ultimo;
+            id_ultimo_producto = id_ultimo;
 
-         let id_primer = respuesta.id_primero;
-             id_primer_producto = id_primer;
+            let id_primer = respuesta.id_primero;
+            id_primer_producto = id_primer;
 
-             //console.log(id_primer_producto,"id_primero");
+
+
+
+
+            //console.log(id_primer_producto,"id_primero");
            //console.log(respuesta);
            //////console.log(productos,imagenes);
             ponerProductosTienda(productos,imagenes);
+
+
+
+
 
         }
 

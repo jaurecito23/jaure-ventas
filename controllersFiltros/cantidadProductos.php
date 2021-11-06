@@ -12,8 +12,10 @@
 
 
         $query = "SELECT count(nombre) FROM productos WHERE id_categoria = $id";
-         $resultado= mysqli_query($db, $query);
 
+
+
+         $resultado= mysqli_query($db, $query);
 
 
       $total = mysqli_fetch_assoc($resultado);

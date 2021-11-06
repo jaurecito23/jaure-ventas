@@ -218,6 +218,9 @@ class PaginasController{
            $categoria_actual = mysqli_fetch_assoc($resultado_categoria);
             //_________________//
 
+             $detalles = $producto->obtenerDetalles();
+
+
            $pagina = "producto";
 
             $router->render('paginas/producto',[
@@ -228,6 +231,7 @@ class PaginasController{
                 "categorias"=>$categorias,
                 "usuario"=>$usuario,
                 "categoria_actual"=>$categoria_actual,
+                "detalles"=>$detalles,
                 "pagina"=>$pagina
             ]);
 
@@ -253,7 +257,7 @@ class PaginasController{
 
             $categorias = Producto::obtenerCategorias();
             $productos_calidad = Producto::obtenerProductosCalidad();
-            $productos = Producto::obtenerProductos($id_categoria, 5);
+            $productos = Producto::obtenerProductos($id_categoria, 9);
 
             // Obtener la categoria actual
 

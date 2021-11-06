@@ -183,7 +183,7 @@
         <!-- Registrados -->
 
 
-          <!-- Administradores -->
+          <!-- Productos de Calidad -->
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -208,6 +208,39 @@
             <a href="crear-admin.php" class="nav-link">
               <i class="fa fa-plus-circle  nav-icon"></i>
               <p>Agregar Producto Calidad.</p>
+            </a>
+          </li>
+
+          </ul>
+        </li>
+
+        <!-- Productos de Calidad -->
+
+          <!-- Administradores -->
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="fas fa-medal"></i>
+            <p>
+              Administradores
+              <i class="fas fa-angle-left right"></i>
+
+            </p>
+          </a>
+
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-list-ul  nav-icon"></i>
+              <p>Ver Todos.</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="crearadmin" class="nav-link">
+              <i class="fa fa-plus-circle  nav-icon"></i>
+              <p>Agregar Administrador.</p>
             </a>
           </li>
 

@@ -193,7 +193,7 @@ class PagarController{
 
 
 
-                        SDK::setAccessToken('APP_USR-601948510932988-102114-27070cb838c142b23853be3f3da48f1e-1004453345');
+                        SDK::setAccessToken('APP_USR-1119179487657782-102113-83c2e7fb599837a4b431685e1d294dcf-1004424070');
 
 
                         $productosItems = [];
@@ -382,7 +382,7 @@ class PagarController{
 
 
                             $ch = curl_init();
-                            $url = "https://api.mercadopago.com/v1/payments/${paymentId}" . "?access_token=APP_USR-601948510932988-102114-27070cb838c142b23853be3f3da48f1e-1004453345";
+                            $url = "https://api.mercadopago.com/v1/payments/${paymentId}" . "?access_token=APP_USR-1119179487657782-102113-83c2e7fb599837a4b431685e1d294dcf-1004424070";
 
 
 

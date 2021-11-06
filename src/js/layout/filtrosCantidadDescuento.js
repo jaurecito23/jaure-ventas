@@ -33,14 +33,14 @@ if(ultimo_producto){
 //console.log(id_ultimo_producto,"ultimo_id");
 //console.log(id_primer_producto,"primer_id");
 let id_categoria = 1;
-let cantidadProductosMostrar = 6;
+let cantidadProductosMostrar = 9;
 
 
 
 
 if(productosTienda !== null){
 
-      cantidadProductosMostrar = cambiarCantidad.value;
+     cantidadProductosMostrar = cambiarCantidad.value;
      id_categoria = selectFiltro.getAttribute("data-categoria");
 
 }
@@ -59,12 +59,13 @@ function eventoFiltrarPorCategoria() {
 
                 id_cat = e.target.getAttribute("data-id");
 
-                filtrarPorPrecio(id_cat);
+             //   filtrarPorPrecio(id_cat);
+                window.location.href = `/accesorios/ventas-jaure/tienda?categoria=${id_cat}`;
 
             }else{
 
-                filtrarPorPrecio(id_categoria);
-
+                 filtrarPorPrecio(id_categoria);
+                //window.location.href = `/accesorios/ventas-jaure/categoria=${id_categoria}`;
             }
 
         })
@@ -147,9 +148,7 @@ function eventoFiltrarPorDescuento(){
 
 function cambiandoCantidad(value){
 
-
     let xhr = new XMLHttpRequest();
-
     let datos = new FormData;
     //////console.log(selectFiltro.value)
     //////console.log(value)
@@ -262,6 +261,7 @@ function filtrarPorMarca(marca){
          //  //////console.log(respuesta);
            let productos = respuesta.productos;
              let imagenes = respuesta.imagenes;
+             console.log(respuesta)
 
            //////console.log(productos,imagenes);
           ponerProductosTienda(productos,imagenes);
@@ -384,6 +384,9 @@ function ponerProductosTienda(productos,imagenes){
     eventoClickAroductos();
     eventoAñadirCarrito();
     eventoVistaRapida()
+
+    var dest = $("#productos-tienda").offset().top;
+    $("html, body").animate({scrollTop: dest},600);
 
 
 }

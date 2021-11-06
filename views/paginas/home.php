@@ -2,34 +2,7 @@
 
 
 
-		<!-- SECTION -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
 
-					<?php foreach ($categorias as  $categoria):?>
-						<!-- shop -->
-							<div class="col-md-4 col-xs-6">
-								<div class="shop animar-btn" data-categoria="<?php echo $categoria['id']; ?>">
-									<div class="shop-img" data-categoria="<?php echo $categoria['id']; ?>">
-										<img src="../imagenes_categorias/<?php echo $categoria["imagen"];  ?>" alt="<?php echo $categoria['nombre']; ?>">
-								</div>
-								<div class="shop-body" data-categoria="<?php echo $categoria['id']; ?>">
-										<h3> <?php $cat = explode(" ",$categoria["nombre"]); echo $cat[0];if(isset($cat[1])){ echo "<br>"; echo $cat[1];}; ?> </h3>
-										<a href="tienda?categoria=<?php echo $categoria['id']; ?>" class="cta-btn">Ver Ahora <i class="fa fa-arrow-circle-right"></i></a>
-								</div>
-								</div>
-							</div>
-							<!-- /shop -->
-							<?php endforeach; ?>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /SECTION -->
 
 		<!-- SECTION -->
 		<div class="section">
@@ -119,6 +92,52 @@
 		</div>
 		<!-- /SECTION -->
 
+
+		<!-- BOTON VER TODO -->
+	<div class="section">
+		<div class="container">
+			<div class="row col-md-12 col-xs-12">
+
+
+					<a style="background-color: #11B009" class="col-md-2 col-xs-10  btn btn-success" href="/accesorios/ventas-jaure/tienda?categoria=1"> Ver Todo </a>
+
+
+			</div>
+		</div>
+	</div>
+		<!-- BOTON VER TODO -->
+
+
+	<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<?php foreach ($categorias as  $categoria):?>
+						<!-- shop -->
+							<div class="col-md-4 col-xs-6">
+								<div class="shop animar-btn" data-categoria="<?php echo $categoria['id']; ?>">
+									<div class="shop-img" data-categoria="<?php echo $categoria['id']; ?>">
+										<img src="../imagenes_categorias/<?php echo $categoria["imagen"];  ?>" alt="<?php echo $categoria['nombre']; ?>">
+								</div>
+								<div class="shop-body" data-categoria="<?php echo $categoria['id']; ?>">
+										<h3> <?php $cat = explode(" ",$categoria["nombre"]); echo $cat[0];if(isset($cat[1])){ echo "<br>"; echo $cat[1];}; ?> </h3>
+										<a href="tienda?categoria=<?php echo $categoria['id']; ?>" class="cta-btn">Ver Ahora <i class="fa fa-arrow-circle-right"></i></a>
+								</div>
+								</div>
+							</div>
+							<!-- /shop -->
+							<?php endforeach; ?>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+
 		<!-- HOT DEAL SECTION -->
 		<div id="hot-deal" class="section">
 			<!-- container -->
@@ -127,7 +146,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="hot-deal">
-							<ul class="hot-deal-countdown">
+							<ul class="hot-deal-countdown" id="hot-deal-countdown">
 								<li>
 									<div>
 										<h3 id="dias">02</h3>
@@ -193,11 +212,12 @@
 
 											<?php
 
+													$mas_vendido = $mas_vendido[0];
 											$imagenes = $mas_vendido->obtenerImagenes();
 
-										?>
+											?>
 												<!-- product -->
-										<div class="product">
+											<div class="product">
 											<div class="product-img">
 												<img src="../imagenes_productos/<?php echo $imagenes[0]?>" data-id="<?php echo $mas_vendido->id; ?>"  alt="">
 												<div class="product-label">
@@ -229,7 +249,7 @@
 										<!-- /product -->
 											<?php endforeach; ?>
 									</div>
-									<div id="slick-nav-2" class="products-slick-nav"></div>
+
 								</div>
 								<!-- /tab -->
 							</div>
