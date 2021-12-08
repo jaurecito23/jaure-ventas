@@ -30,6 +30,29 @@
         $query = "SELECT * FROM productos WHERE id_categoria = $id_categoria  ORDER BY precio DESC LIMIT $cantidad";
 
     }
+    if($tipo == "cambiarPagina"){
+        $id_ultimo = $_POST["id_ultimo"];
+        $idprimero = $_POST["id_primero"];
+        $aumentar = $_POST["aumentar"];
+        $ante_ultimo = $_POST["id_ante_ultimo"];
+
+        if($aumentar == "true"){
+
+
+            $query = "SELECT * FROM productos WHERE id_categoria = $id_categoria AND id < $id_ultimo ORDER BY id DESC LIMIT $cantidad";
+
+
+        }else{
+
+
+
+           $query = "SELECT * FROM productos WHERE id_categoria = $id_categoria AND id BETWEEN  $idprimero AND $ante_ultimo  ORDER BY id DESC LIMIT $cantidad";
+
+
+
+        }
+
+    }
 
     if($tipo == "cantidad"){
 
@@ -37,11 +60,11 @@
 
         if($ordenarPor == 0){
 
-            $query = "SELECT * FROM productos WHERE id_categoria = $id_categoria  ORDER BY precio DESC LIMIT $cantidad";
+            $query = "SELECT * FROM productos WHERE id_categoria = $id_categoria  ORDER BY id DESC LIMIT $cantidad";
 
         }else{
 
-            $query = "SELECT * FROM productos WHERE id_categoria = $id_categoria ORDER BY descuento DESC LIMIT $cantidad";
+            $query = "SELECT * FROM productos WHERE id_categoria = $id_categoria ORDER BY id DESC LIMIT $cantidad";
 
         }
 
@@ -52,34 +75,39 @@
         $marca = $_POST["marca"];
 
 
-        if($ordenarPor == 0){
 
 
 
-            $query = "SELECT * FROM productos LEFT JOIN detalles_productos ON detalles_productos.marca = '$marca' ORDER BY productos.precio DESC LIMIT $cantidad;";
+
+            $query = "SELECT * FROM detalles_productos INNER JOIN productos ON productos.id = detalles_productos.id_producto WHERE marca = '$marca' ORDER BY productos.id LIMIT $cantidad;";
 
 
 
-        }else{
-
-            $query = "SELECT * FROM productos  LEFT JOIN detalles_productos ON detalles_productos.marca = '$marca' ORDER BY productos.descuento DESC LIMIT $cantidad";
-
-        }
 
     }
 
 
 
     $resultado = Producto::consultarSQL($query);
+
    $imagenes = [];
 
+   $id_primero = false;
    foreach ($resultado as $producto) {
-       $imagenes[$producto->id] = $producto->obtenerImagenes();
+
+    if($id_primero == false){
+
+        $id_primero = $producto->id;
+    }
+    $imagenes[$producto->id] = $producto->obtenerImagenes();
+
    }
+
 
 
     $respuesta = array(
 
+        "id_primero"=>$id_primero,
         "productos"=>$resultado,
         "imagenes"=>$imagenes
 

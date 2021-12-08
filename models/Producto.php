@@ -64,9 +64,9 @@ public function validar(){
 
     }else{
 
-        if(strlen($this->descripcion) > 100){
+        if(strlen($this->descripcion) > 250){
 
-            self::$errores[] = "La descripción tiene más de 100 caracteres";
+            self::$errores[] = "La descripción tiene más de 250 caracteres";
 
         }
 
@@ -147,9 +147,9 @@ public function validarDetalles($detalles = []){
     $errores = [];
 
 
-    if(!$detalles["descripcion-mayor"] || strlen($detalles["descripcion-mayor"]) > 150){
+    if(!$detalles["descripcion-mayor"] || strlen($detalles["descripcion-mayor"]) > 500){
 
-        $errores[] = "Debes añadir una descripción (Max: 150 caracteres)";
+        $errores[] = "Debes añadir una descripción (Max: 500 caracteres)";
 
 
     }
@@ -204,8 +204,17 @@ public function guardarNombreImagen($nombre,$id_producto){
 
 public static function obtenerMasVendidos(){
 
-    $query = "SELECT * FROM productos WHERE id = (SELECT id_producto FROM mas_vendidos LIMIT 1);";
-    $resultado = $resultado = self::consultarSQL($query);
+    $query = "SELECT id_producto FROM mas_vendidos LIMIT 3";
+    $id_productos = self::$db->query($query);
+
+    $resultado = [];
+    foreach($id_productos as  $id_producto){
+        $id = $id_producto["id_producto"];
+        $query = "SELECT * FROM productos WHERE id = $id";
+        $resultado[] = self::consultarSQL($query);
+
+    }
+
     return $resultado;
 
 }
@@ -262,6 +271,20 @@ public static function obtenerProductosCalidad(){
 
         }
      return $categorias;
+
+
+    }
+
+
+    public function obtenerDetalles(){
+
+        $id = $this->id;
+        $query = "SELECT * FROM detalles_productos WHERE id_producto = ${id}";
+        $detalles = self::$db->query($query);
+
+
+        return $detalles->fetch_assoc();
+
 
 
     }

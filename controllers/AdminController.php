@@ -22,10 +22,88 @@ class AdminController{
     }
     public static function crearadmin(RouterAdmin $router){
 
+        $respuesta = null;
+        $errores = [];
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        $router->render('paginas/crearadmin',[
+            $usuario = $_POST["usuario"] ?? null;
+            $nombre = $_POST["nombre"] ?? null;
+            $password = $_POST["password"] ?? null;
+            $nivel = $_POST["nivel"] ?? null;
+
+            if($usuario == ""){
+
+                $errores[] = "Debe ingresar un usuario";
+
+            }
+            if($nombre == ""){
+
+                $errores[] = "Debe ingresar un nombre";
+
+            }
+            if($password == ""){
+
+                $errores[] = "Debe ingresar un password";
+
+            }
+            if($nivel == ""){
+
+                $errores[] = "Debe ingresar un nivel";
+
+            }
+    if(empty($errores)){
 
 
+        $opciones = array(
+            "cost"=>12
+        );
+
+     $password_hashed = password_hash($password, PASSWORD_BCRYPT,$opciones);
+
+
+        try{
+
+            $db = conectarDB();
+
+            $stmt = $db->prepare("INSERT INTO admins (usuario,nombre,password,editado,nivel) VALUES(?,?,?,NOW(),?);");
+
+            $stmt->bind_param("sssi",$usuario,$nombre,$password_hashed,$nivel);
+            $stmt->execute();
+            $id_registro = $stmt->insert_id;
+
+            $respuesta = null;
+            if($stmt->affected_rows !== -1){
+
+                $respuesta = "exito";
+
+            }
+
+
+
+
+
+            $stmt->close();
+            $db->close();
+
+        }catch(Exception $e){
+
+            echo "Error". $e->getMessage();
+
+        }
+
+
+
+
+
+
+    }
+
+}
+
+$router->render('paginas/crearadmin',[
+
+            "respuesta"=>$respuesta,
+            "errores"=>$errores
 
         ]);
 
@@ -98,7 +176,7 @@ class AdminController{
                 }
             }
 
-      }
+        }
 
         $router->render('paginas/crearproducto',[
 
@@ -107,6 +185,91 @@ class AdminController{
             "errores"=>$errores,
             "erroresDetalles"=>$erroresDetalles
 
+
+        ]);
+
+    }
+
+    public static function cerrarsesion(RouterAdmin $router){
+
+        session_start();
+        $_SESSION = [];
+        session_destroy();
+
+        header("Location: /accesorios/admin/login");
+
+
+    }
+
+    public static function login(RouterAdmin $router){
+
+        $respuesta = null;
+        $db = conectarDB();
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                $usuario = $_POST["usuario"];
+                $password = $_POST["password"];
+
+
+
+                try{
+
+
+
+                    $stmt = $db->prepare("SELECT * FROM admins WHERE usuario = ?;");
+
+                    $stmt->bind_param("s",$usuario);
+                    $stmt->execute();
+                    $id_registro = $stmt->insert_id;
+
+                    $stmt->bind_result($id_admin,$usuario_admin,$nombre_admin,$password_admin,$editado,$nivel);
+
+
+                    if($stmt->affected_rows){
+
+                        $existe = $stmt->fetch();
+
+                        if($existe){
+
+                            if(password_verify($password, $password_admin)){
+
+                                session_start();
+                                $_SESSION["usuario"] = $usuario_admin;
+                                $_SESSION["nombre"] = $nombre_admin;
+                                $_SESSION["nivel"] = $nivel;
+                                $_SESSION["id_admin"] = $id_admin;
+
+                                header("Location: /accesorios/admin/");
+
+
+                            }
+
+                        }else{
+                            $respuesta = "error";
+                        }
+
+                    }
+
+
+
+                    $stmt->close();
+                    $db->close();
+
+                }catch(Exception $e){
+
+                    echo "Error". $e->getMessage();
+
+                }
+
+             }
+
+
+
+
+        $router->render('paginas/login',[
+
+            "respuesta" => $respuesta
 
         ]);
 

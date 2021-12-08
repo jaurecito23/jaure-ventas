@@ -19,6 +19,8 @@
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
 
+
+		
 		<!-- Slick -->
 		<link type="text/css" rel="stylesheet" href="../css/slick.css"/>
 		<link type="text/css" rel="stylesheet" href="../css/slick-theme.css"/>
@@ -34,12 +36,27 @@
 		<link type="text/css" rel="stylesheet" href="../css/style.css"/>
 		<link type="text/css" rel="stylesheet" href="build/css/app.css"/>
 
+
+		<!-- EN ESTA SECCIÓN SE PONE EL CODIGO EXPECIFICO DE CADA PAGINA -->
+		<?php if($pagina === "pasapalabras"):?>
+		
+		<link type="text/css" rel="stylesheet" href="/accesorios/juegos/index.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <link rel="icon" href="images/favicon.png" type="image/x-icon">
+			
+		<?php endif;?>
+
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
+		<!-- Facebook Pixel Code -->
+		<!-- <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '324383245776592'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=324383245776592&ev=PageView&noscript=1"/></noscript> -->
+		<!-- End Facebook Pixel Code -->
 
     </head>
 	<body>
@@ -198,7 +215,8 @@
 		<!-- /NAVIGATION -->
 
 		<!-- whatsapp -->
-		<div class="whatsapp animacion-whatsapp">
+		<div class="whatsapp animacion-whatsapp" style="left: 4%;
+    ">
 
 			<a href="https://api.whatsapp.com/send?phone=59893693110&text=Hola,%20%C2%BF%20como%20est%C3%A1n%20?,%20tengo%20una%20duda%20,%20podr%C3%ADan%20ayudarme..." class=""><img src="/accesorios/img/whatsapp.png"></a>
 

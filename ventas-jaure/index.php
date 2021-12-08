@@ -32,6 +32,7 @@ $router->get("/cambiarcontrasena",[PaginasController::class,"cambiarcontrasena"]
 $router->get("/pagar",[PagarController::class,"pagar"]);
 $router->get("/terminarpago",[PagarController::class,"terminarpago"]);
 $router->get("/resultadopagar",[PagarController::class,"resultadopagar"]);
+$router->get("/pasapalabras",[PaginasController::class,"pasapalabras"]);
 
 
 

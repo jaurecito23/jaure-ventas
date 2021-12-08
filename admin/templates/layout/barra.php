@@ -51,7 +51,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  data-slide="true" href="#" role="button">
+        <a class="nav-link"  data-slide="true" href="/accesorios/admin/cerrarsesion" role="button">
           Cerrar Session
         </a>
       </li>

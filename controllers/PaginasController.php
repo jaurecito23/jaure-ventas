@@ -218,6 +218,9 @@ class PaginasController{
            $categoria_actual = mysqli_fetch_assoc($resultado_categoria);
             //_________________//
 
+             $detalles = $producto->obtenerDetalles();
+
+
            $pagina = "producto";
 
             $router->render('paginas/producto',[
@@ -228,6 +231,7 @@ class PaginasController{
                 "categorias"=>$categorias,
                 "usuario"=>$usuario,
                 "categoria_actual"=>$categoria_actual,
+                "detalles"=>$detalles,
                 "pagina"=>$pagina
             ]);
 
@@ -253,7 +257,7 @@ class PaginasController{
 
             $categorias = Producto::obtenerCategorias();
             $productos_calidad = Producto::obtenerProductosCalidad();
-            $productos = Producto::obtenerProductos($id_categoria, 5);
+            $productos = Producto::obtenerProductos($id_categoria, 9);
 
             // Obtener la categoria actual
 
@@ -528,4 +532,52 @@ class PaginasController{
 
 
         }
+
+
+
+        // PARTE JUEGOS 
+
+
+        public static function pasapalabras(Router $router){
+
+
+    
+            // Obtener el usuario si existe
+                $id_usuario = $_SESSION["id_usuario"] ?? null;
+
+                $usuario = null;
+
+                if($id_usuario){
+
+                    $usuario = Usuario::find($id_usuario);
+
+                }
+
+
+                $categorias = Producto::obtenerCategorias();
+               //  $productos = Producto::obtenerProductos();
+               // $mas_vendidos = Producto::obtenerMasVendidos();
+                // $productos_calidad = Producto::obtenerProductosCalidad();
+                 $pagina = "pasapalabras";
+
+
+
+
+            $router->render('juegos/pasapalabras',[
+
+               // "productos"=>$productos,
+                //"mas_vendidos"=>$mas_vendidos,
+                //"productos_calidad"=>$productos_calidad,
+                "categorias"=>$categorias,
+                "usuario"=>$usuario,
+                "pagina"=>$pagina
+
+            ]);
+
+        }
+
+
+
+
+
     }

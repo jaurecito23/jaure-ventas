@@ -22,6 +22,15 @@ function debuguear($var){
 
 }
 
+function obtenerPaginaActual(){
+
+
+    $archivo =$_SERVER['REQUEST_URI'];
+    // $pagina = str_replace(".php","",$archivo);
+    return $archivo;
+
+}
+
 function san($value){
 
     $value = htmlspecialchars($value);

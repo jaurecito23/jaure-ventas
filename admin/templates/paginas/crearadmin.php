@@ -1,6 +1,15 @@
 
 
 
+<?php foreach ($errores as $error):?>
+  <div id="toastsContainerTopRight" class="toasts-top-right fixed"><div class="toast bg-danger fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Error</strong><small>Jaure Ventas</small><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body"><?php echo $error;?></div></div></div>
+
+  <?php endforeach;?>
+
+  <?php if($respuesta && $respuesta=="exito"):?>
+    <div id="toastsContainerTopRight" class="toasts-top-right fixed"><div class="toast bg-success fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Excelente</strong><small>Jaure Ventas</small><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Se creo Correctamente</div></div></div>
+  <?php endif;?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -45,7 +54,7 @@
               <!-- form start -->
 
 
-                  <form class="form-horizontal" name="crear-admin" id="crear-admin" method="POST" action="insertar-admin.php">
+                  <form class="form-horizontal" name="crear-admin"  method="POST">
                       <div class="card-body">
 
                   <div class="form-group row">
@@ -62,6 +71,15 @@
                     </div>
                   </div>
 
+                  <div class="form-group row">
+                    <label for="contraseña" class="col-sm-2 col-form-label">Nivel</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" name="nivel">
+                          <option value="1"> Acceso Toal</option>
+                            <option value="2"> Solo CRUD </option>
+                      </select>
+                    </div>
+                  </div>
                   <div class="form-group row">
                     <label for="contraseña" class="col-sm-2 col-form-label">Contraseña</label>
                     <div class="col-sm-10">
@@ -80,7 +98,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
 
-                  <button type="submit"  class="btn btn-info">Añadir</button>
+                  <input type="submit"  class="btn btn-info" value="Añadir">
                   <button type="submit" class="btn btn-default float-right">Cancel</button>
                 </div>
                 <!-- /.card-footer -->
